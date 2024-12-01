@@ -1,0 +1,89 @@
+body {
+    font-family: 'segoe ui light', sans-serif;
+    background-color: #2D3E50;
+    color: #fff;
+}
+h1 , h2 , h3 ,h4 ,h5 ,h6 {
+     font-family: "Sour Gummy", sans-serif;
+}
+i {
+    cursor: pointer;
+}
+
+/* .card:hover img {
+    transform: scale(1.1);
+
+} */
+
+#form-alert {
+    display: none;
+}
+
+#add {
+    display: block;
+}
+#edit {
+    display: none;
+}
+
+#search-alert {
+    display: none;
+}
+#list-empty p {
+    font-variant: small-caps;
+}
+
+.product-card img {
+        height: 15rem;
+}
+
+
+
+
+.numOfDel {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+
+.form-control {
+        box-shadow: none;
+        border:none;
+        font-size: 1.2rem;
+        
+}  
+.fa-check , .fa-circle-exclamation {
+    content: "\f00c";
+    position: absolute;
+    top: 55%;
+    right: 0;
+    transform: translate(-100%, -80%);
+    display: none;
+    font-size: 1.5rem;
+    
+
+}
+.desc .fa-check , .desc .fa-circle-exclamation { 
+    top : 20%
+}
+.form-control:focus {
+        box-shadow: none;
+
+}
+
+
+.swal2-html-container>p {
+      font-family: "Ubuntu", sans-serif;
+
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 428px) { 
+    
+     #price-range div.col:first-child {
+        flex-basis: 100% !important;
+     }
+}

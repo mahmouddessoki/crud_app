@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./imgs/crud-4874261-4052973.webp" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Include SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>CRUD</title>
+</head>
+
+<body>
+
+    <section class="products-store py-5">
+
+        <div class="container">
+            <h1 class="mb-5 text-center">Products CRUD</h1>
+            <form action="" id="product-form">
+                <div class="mb-4 position-relative">
+
+                    <input id="product-name" type="text" class="form-control p-3" name="name"
+                        placeholder="Enter product name..">
+                    <i class="fa-solid fa-check fa-lg text-success"></i>
+                    <i class="fa-solid fa-circle-exclamation fa-lg text-danger"></i>
+
+                </div>
+                <div class="row gy-4">
+                    <div class="col-md-6 col-12">
+                        <div class="price-input position-relative">
+                            <input id="product-price" type="text" min="200" max="2000" class="form-control  p-3"
+                                name="price" placeholder="Enter product price..">
+                            <i class="fa-solid fa-check fa-lg text-success"></i>
+                            <i class="fa-solid fa-circle-exclamation fa-lg text-danger"></i>
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="quantity-input position-relative">
+                            <input id="product-qty" type="text" min="1" class="form-control p-3" name="qty"
+                                placeholder="Enter product quantity..">
+                            <i class="fa-solid fa-check fa-lg text-success"></i>
+                            <i class="fa-solid fa-circle-exclamation fa-lg text-danger"></i>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="my-4 position-relative">
+
+                    <input id="product-cat" type="text" class="form-control p-3" name="category"
+                        placeholder="Enter product category..">
+
+                    <i class="fa-solid fa-check fa-lg text-success"></i>
+                    <i class="fa-solid fa-circle-exclamation fa-lg text-danger"></i>
+
+
+                </div>
+                <div class="mb-4 desc position-relative">
+
+                    <textarea id="product-desc" rows="5" name="description" id="description" class="form-control p-3"
+                        placeholder="Enter product description.."></textarea>
+
+                    <i class="fa-solid fa-check fa-lg text-success"></i>
+                    <i class="fa-solid fa-circle-exclamation fa-lg text-danger"></i>
+
+                </div>
+                <div class="my-4">
+
+                    <input id="product-img" type="file" name="product-img" class="form-control" id="product-img"
+                        accept="image/*">
+
+                </div>
+
+                <div class="d-flex column-gap-3 justify-content-end">
+
+                    <button id="add" type="button" onclick="addProduct()"
+                        class="btn btn-outline-info text-white text-capitalize p-3">
+                        add product
+
+                    </button>
+                    <button id="edit" type="button" onclick="editConfirm()"
+                        class="btn btn-outline-warning text-capitalize p-3">
+                        edit product
+
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="alert mt-3 alert-danger text-center text-capitalize" id="form-alert">all product fields are
+                required
+                , check empty fields</div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <div class="products-list py-5" id="products-list">
+        <div class="container">
+            <h2 class="text-center mb-5">Retrieve Options</h2>
+
+            <div class="row gy-3 justify-content-center align-items-center mb-5">
+                <div class="col-xl-6 col-lg-12 col-12">
+
+                    <form action="" id="search-by-text">
+                        <div class="search-by-text bg-dark p-3 rounded rounded-3 shadow col">
+                            <h3>Enter (name | description) </h3>
+                            <input type="search" id="searchWord" placeholder="Type here......"
+                                class="form-control fs-5">
+
+
+
+                        </div>
+
+
+
+                        <!-- <button id="search-btn" onclick="search()"  type="button" class="btn text-capitalize btn-outline-warning">search</button> -->
+
+                    </form>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-12">
+
+                    <form action="" id="search-by-text">
+                        <div class="search-by-text bg-dark p-3 rounded rounded-3 shadow col">
+                            <h3>Choose Category </h3>
+                            <select name="" id="cats" class="form-select form-select-lg">
+
+
+
+                            </select>
+
+
+
+
+
+                        </div>
+
+
+
+                        <!-- <button id="search-btn" onclick="search()"  type="button" class="btn text-capitalize btn-outline-warning">search</button> -->
+
+                    </form>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-12">
+
+                    <form action="" id="search-by-price">
+                        <div class="search-by-price bg-dark p-3 rounded rounded-3 shadow ">
+                            <h3>Enter price range</h3>
+                            <div id="price-range"
+                                class="d-flex justify-content-center flex-wrap row-gap-3 column-gap-4">
+
+                                <div class="min-group col d-flex align-items-center column-gap-1">
+                                    <label class="text-uppercase">from: </label>
+                                    <input step="50" value="300" id="price-search-min" type="number"
+                                        class="form-control" max="20000" min="300">
+                                </div>
+
+
+                                <div class="max-group col d-flex align-items-center column-gap-1 ">
+                                    <label class="text-uppercase">to: </label>
+                                    <input step="50" value="20000" id="price-search-max" type="number"
+                                        class="form-control w-100" max="20000" min="300">
+                                </div>
+
+                                <button type="button" onclick="search()"
+                                    class="btn text-white btn-outline-warning">Get</button>
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- alerts related to search results-->
+            <div class="alert alert-danger " id="search-alert">
+
+            </div>
+
+
+
+            <h2 class="mb-5 text-center">Products List</h2>
+            <div class="row gy-5" id="products-container">
+                <!-- products will be displayed here -->
+
+
+
+
+                <!-- clear all & deleted Products -->
+
+            </div>
+            <div class="clr-del-btns my-5 d-flex justify-content-end column-gap-3">
+
+                <button onclick="clearAll()"
+                    class="btn btn-outline-danger text-white px-3 py-2 text-capitalize fw-bold "> clear all
+
+                </button>
+                <a href="./delete-history.html"
+                    class="btn btn-outline-info text-white px-3 py-2 text-capitalize fw-bold ">Recycle Bin
+                    <span id="numOfDel" class="bg-primary text-white numOfDel">1</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="list-empty" class="py-5 text-center">
+        <p class="h1 text-center">
+            No Products Added Yet...
+
+        </p>
+
+
+        <a href="./delete-history.html"
+            class="btn mt-3 btn-outline-info text-white px-3 py-2 text-capitalize fw-bold ">Recycle Bin
+            <span id="numOfDel" class="bg-primary text-white numOfDel ">1</span>
+        </a>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

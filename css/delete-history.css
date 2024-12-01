@@ -1,0 +1,11 @@
+
+.back-btn i {
+    transition: all 0.3s;
+}
+.back-btn:hover i {
+    transform: translateX(-5px) !important;
+  
+}
+#empty-bin {
+    display: none;
+}
